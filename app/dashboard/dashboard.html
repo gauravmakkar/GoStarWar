@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2" style="height: 10%">
+        <div class="clearfix">
+            <div class="pull-right">
+                <span data-ng-bind="user.name"></span>
+                <span ng-click="logout()" data-ng-bind="'Logout'" class="btn"></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2" style="border: 1px solid black;">
+        <div class="col-md-12">
+            <div class="form-group" style="padding:10px;">
+                <input ng-change="loadPlanets()" data-ng-model="search" type="TEXT" class="form-control"
+                       id="planetSearch"
+                       placeholder="Search Planet">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <h4>Planets</h4>
+            <div data-ng-repeat="planet in planets" style="padding:5px;border-bottom: 1px solid black">
+                <div class="clearfix">
+                    <div class="pull-left" data-ng-bind="planet.name">
+                    </div>
+                    <div class="pull-right">
+                        <div ng-if="planet.population!=='unknown'"
+                             ng-style={width:(+planet.population)*100/maxPopulation,backgroundColor:'green',padding:'5px'}
+                             data-ng-bind="planet.population">
+                        </div>
+                        <div ng-if="planet.population==='unknown'"
+                             ng-style={color:'red',padding:'5px'} data-ng-bind="planet.population">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div ng-if="!loaded" data-ng-bind="'Loading...'">
+            </div>
+            <div ng-if="loaded && planets.length===0" data-ng-bind="'No planet found'">
+
+            </div>
+        </div>
+    </div>
+</div>

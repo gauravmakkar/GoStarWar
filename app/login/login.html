@@ -1,0 +1,24 @@
+<div style="margin-top: 7%">
+    <div class="clearfix">
+        <div class="text-center">
+            <h3>Star Wars</h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 well">
+        <form ng-submit="login()">
+            <div class="form-group">
+                <label for="exampleInputEmail1" data-ng-bind="'Username'"></label>
+                <input data-ng-model="user.username" type="TEXT" class="form-control" id="exampleInputEmail1"
+                       placeholder="Luke Skywalker">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" data-ng-bind="'Password'"></label>
+                <input data-ng-model="user.password" type="password" class="form-control" id="exampleInputPassword1"
+                       placeholder="19BBY">
+            </div>
+            <button type="submit" class="btn btn-default" data-ng-bind="'Submit'"></button>
+        </form>
+    </div>
+</div>
