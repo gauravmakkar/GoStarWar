@@ -55,4 +55,8 @@ npm start
 
 Now browse to the app at [`localhost:8000/index.html`][local-app-url].
 
+## TODO:
+1. Use factories to fetch data.
+2. Use external stylesheets/beautifications.
+
 
