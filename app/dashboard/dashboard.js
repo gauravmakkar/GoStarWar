@@ -12,7 +12,7 @@ angular.module('goStarWar.dashboard', ['ngRoute'])
         });
     }])
 
-    .controller('DashboardCtrl', ['$http', '$scope', "$location", '$q', function ($http, $scope, $location, $q) {
+    .controller('DashboardCtrl', ['$http', '$scope', "$location", '$q','$rootScope', function ($http, $scope, $location, $q,$rootScope) {
         $scope.search = ""
         $scope.noOfSearchPerformed = 0
         /**
@@ -20,6 +20,10 @@ angular.module('goStarWar.dashboard', ['ngRoute'])
          */
         if (!sessionStorage.user || !angular.fromJson(sessionStorage.user).name) {
             $location.path("/login")
+        }else{
+            if(!$rootScope.user){
+                $rootScope.user=angular.fromJson(sessionStorage.user)
+            }
         }
 
         var canceler = $q.defer();
@@ -30,7 +34,7 @@ angular.module('goStarWar.dashboard', ['ngRoute'])
         };
 
         $scope.loadPlanets = function () {
-            if ($scope.noOfSearchPerformed > 15) {
+            if ($scope.noOfSearchPerformed > 15 && $rootScope.user.name!=="Luke Skywalker") {
                 alert("You've reached maximum limit of searches")
                 return false
             }
